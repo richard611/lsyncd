@@ -63,7 +63,8 @@ add_custom_command( OUTPUT runner.c
 # this supposes the Lua compiler 'luac' is sitting right next to the Lua interpreter 'lua'
 add_custom_command( OUTPUT runner.out
 	COMMAND ${CMAKE_COMMAND} -E echo "Compiling built-in runner"
-	COMMAND ${LUA_COMPILER} -o runner.out ${PROJECT_SOURCE_DIR}/lsyncd.lua
+	#COMMAND ${LUA_COMPILER} -o runner.out ${PROJECT_SOURCE_DIR}/lsyncd.lua
+	COMMAND cp ${PROJECT_SOURCE_DIR}/lsyncd.lua runner.out
 	DEPENDS ${PROJECT_SOURCE_DIR}/lsyncd.lua
 )
 
@@ -84,7 +85,8 @@ set( DEFAULT_CONFIGS
 
 add_custom_command( OUTPUT defaults.out
 	COMMAND ${CMAKE_COMMAND} -E echo "Compiling built-in default configs"
-	COMMAND ${LUA_COMPILER} -o defaults.out ${DEFAULT_CONFIGS}
+	#COMMAND ${LUA_COMPILER} -o defaults.out ${DEFAULT_CONFIGS}
+	COMMAND cp ${PROJECT_SOURCE_DIR}/defaults.lua  defaults.out
 	DEPENDS ${DEFAULT_CONFIGS}
 )
 
